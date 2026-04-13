@@ -654,7 +654,7 @@
                 method="post" indica el método de envío de datos.-->
             <label for="usuario">Nombre de usuario:</label>
             <!-- label describe el campo y se asocia con el input mediante el atributo for -->
-            <input type="text" id="usuario" name="usuario" placeholder="Ingrese su nombre de usuario" required>
+            <input type="text" id="usuario" name="usuario" placeholder="Ingrese su nombre de usuario" required minlength="4" maxlength="20">
             <!--input type="text" crea un campo de texto.
                 id identifica el campo dentro del documento.
                 name identifica el dato al enviarse.
@@ -718,7 +718,7 @@
             <!--input type="email" crea un campo específico para correos electrónicos
                 y ayuda a validar el formato ingresado.-->
             <label for="telefono">Teléfono móvil:</label>
-            <input type="tel" id="telefono" name="telefono" placeholder="Ingrese su teléfono móvil" required>
+            <input type="tel" id="telefono" name="telefono" pattern="[0-9]{9}" placeholder="Ej: 912345678" required>
             <!-- input type="tel" está orientado al ingreso de números telefónicos -->
             <label for="comentarios">Comentarios:</label>
             <textarea id="comentarios" name="comentarios" rows="5"
@@ -728,6 +728,10 @@
             <button type="submit">Registrar</button>
             <!-- Botón que envía el formulario de registro -->
         </form>
+    </section>
+</body>
+
+</html>
     </section>
 </body>
 
