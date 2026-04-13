@@ -1,0 +1,734 @@
+<!DOCTYPE html> <!-- Indica al navegador que el documento está escrito en HTML5 -->
+<html lang="es"> <!-- Elemento raíz del documento; define que el idioma principal es español -->
+
+<head>
+    <meta charset="UTF-8"> <!-- Permite mostrar correctamente tildes, eñes y caracteres especiales -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Hace que la página se adapte mejor a distintos tamaños de pantalla -->
+    <meta name="description" content="Página web de un restaurante de gastronomía chilena">
+    <!-- Describe brevemente el contenido del sitio -->
+    <meta name="author" content="Juan Saavedra Fica">
+    <!-- Identifica al autor del documento -->
+    <meta name="keywords" content="restaurante chileno, gastronomía chilena, platos típicos, comida tradicional">
+    <!-- Define palabras clave relacionadas con el contenido del sitio -->
+    <meta name="robots" content="index, follow">
+    <!-- Permite indexar la página y seguir enlaces -->
+    <title>Restaurante Sabores de Chile</title>
+    <!-- Título que aparece en la pestaña del navegador -->
+
+    <style>
+        /* ===== ESTILO GENERAL DEL SITIO ===== */
+        body {
+            font-family: Arial, sans-serif;
+            /* Define el tipo de letra principal del sitio */
+            margin: 0;
+            /* Elimina el margen exterior por defecto del navegador */
+            background-color: #f7f3ee;
+            /* Aplica un fondo cálido, acorde a la temática del restaurante */
+            color: #2b2b2b;
+            /* Define el color base del texto */
+        }
+
+        /* ===== CONTENEDOR GENERAL ===== */
+        .contenedor {
+            width: 90%;
+            /* Permite que el contenido se adapte al ancho de la pantalla */
+            max-width: 1100px;
+            /* Limita el ancho máximo del contenido para que no se vea demasiado extendido */
+            margin: 0 auto;
+            /* Centra horizontalmente el bloque en la página */
+        }
+
+        /* ===== BARRA SUPERIOR FIJA ===== */
+        .barra-superior {
+            position: sticky;
+            /* Mantiene visible el encabezado y el menú al hacer scroll */
+            top: 0;
+            /* Lo fija en la parte superior de la ventana */
+            z-index: 1000;
+            /* Evita que otros elementos se superpongan por encima */
+        }
+
+        /* ===== ENCABEZADO ===== */
+        header {
+            background: linear-gradient(135deg, #8B0000, #5e0b0b);
+            /* Aplica un fondo degradado rojo oscuro */
+            color: white;
+            /* Define texto en color blanco */
+            padding: 28px 20px;
+            /* Agrega espacio interno vertical y horizontal */
+            text-align: center;
+            /* Centra el contenido dentro del encabezado */
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+            /* Añade una sombra suave para destacar el encabezado */
+        }
+
+        header h1 {
+            margin: 0;
+            /* Elimina el margen por defecto del título principal */
+            font-size: 2.5rem;
+            /* Aumenta el tamaño del texto del título */
+        }
+
+        /* ===== MENÚ DE NAVEGACIÓN ===== */
+        nav {
+            background-color: #1f1f1f;
+            /* Define un fondo oscuro para el menú */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+            /* Añade una sombra sutil debajo del menú */
+        }
+
+        nav .contenedor {
+            display: flex;
+            /* Activa el modelo de distribución flexible */
+            justify-content: center;
+            /* Centra horizontalmente el contenido del menú */
+        }
+
+        nav ul {
+            list-style: none;
+            /* Elimina los puntos de la lista */
+            margin: 0;
+            /* Elimina el margen externo */
+            padding: 0;
+            /* Elimina el relleno interno */
+            display: flex;
+            /* Organiza los elementos en fila */
+            flex-wrap: wrap;
+            /* Permite que los enlaces bajen a otra línea si no caben */
+            justify-content: center;
+            /* Centra los enlaces dentro del menú */
+        }
+
+        nav li {
+            margin: 0;
+            /* Evita espacios extra entre elementos de lista */
+        }
+
+        nav a {
+            display: block;
+            /* Convierte el enlace en bloque para ampliar el área clickeable */
+            color: white;
+            /* Define el color del texto del enlace */
+            text-decoration: none;
+            /* Elimina el subrayado por defecto */
+            padding: 16px 18px;
+            /* Agrega espacio interno alrededor de cada enlace */
+            font-weight: bold;
+            /* Resalta visualmente el texto */
+            transition: background-color 0.3s ease, color 0.3s ease;
+            /* Suaviza el cambio de color al pasar el mouse */
+        }
+
+        nav a:hover {
+            background-color: #8B0000;
+            /* Cambia el fondo del enlace al pasar el cursor */
+
+            color: #f7d27a;
+            /* Cambia el color del texto del enlace al pasar el cursor */
+        }
+
+        /* ===== SECCIONES PRINCIPALES ===== */
+        section {
+            background-color: white;
+            /* Aplica fondo blanco a cada sección */
+            margin: 25px auto;
+            /* Agrega separación entre secciones y las centra */
+            padding: 25px;
+            /* Agrega espacio interno dentro de la sección */
+            border-radius: 14px;
+            /* Redondea los bordes de la sección */
+            width: 90%;
+            /* Mantiene ancho adaptable */
+            max-width: 1100px;
+            /* Limita el ancho máximo */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            /* Añade sombra suave alrededor de cada sección */
+            scroll-margin-top: 160px;
+            /* Evita que el título quede escondido tras la barra superior fija */
+        }
+
+        /* ===== TÍTULOS ===== */
+        h2 {
+            color: #8B0000;
+            /* Aplica color rojo oscuro a los títulos de sección */
+            border-left: 6px solid #c99a2e;
+            /* Agrega una línea decorativa dorada a la izquierda */
+            padding-left: 12px;
+            /* Separa el texto de la línea decorativa */
+            margin-top: 0;
+            /* Reduce el espacio superior del título */
+        }
+
+        /* ===== PÁRRAFOS ===== */
+        p {
+            line-height: 1.7;
+            /* Mejora la legibilidad del texto al aumentar la separación entre líneas */
+        }
+
+        /* ===== TABLAS ===== */
+        table {
+            width: 100%;
+            /* Hace que la tabla ocupe todo el ancho disponible */
+            border-collapse: collapse;
+            /* Une los bordes de las celdas */
+            margin-top: 15px;
+            /* Separa la tabla del contenido anterior */
+            border-radius: 10px;
+            /* Redondea las esquinas visibles de la tabla */
+            overflow: hidden;
+            /* Mantiene el efecto redondeado sin que sobresalga el contenido */
+        }
+
+        th {
+            background-color: #8B0000;
+            /* Aplica fondo rojo oscuro a los encabezados de tabla */
+            color: white;
+            /* Define texto blanco en los encabezados */
+            text-align: left;
+            /* Alinea el texto a la izquierda */
+        }
+
+        th,
+        td {
+            padding: 12px;
+            /* Agrega espacio interno en celdas */
+            border-bottom: 1px solid #e4e4e4;
+            /* Separa las filas con una línea suave */
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #faf7f2;
+            /* Alterna el color de fondo en filas pares */
+        }
+
+        tbody tr:hover {
+            background-color: #f3e7d6;
+            /* Resalta una fila al pasar el mouse */
+        }
+
+        /* ===== LISTAS ===== */
+        ul li {
+            margin-bottom: 8px;
+            /* Separa verticalmente los elementos de la lista */
+        }
+
+        dl dt {
+            font-weight: bold;
+            /* Resalta el término principal en la lista descriptiva */
+            color: #5e0b0b;
+            /* Aplica un tono rojo oscuro */
+            margin-top: 12px;
+            /* Agrega espacio sobre cada término */
+        }
+
+        dl dd {
+            margin-left: 18px;
+            /* Desplaza la descripción hacia la derecha */
+            margin-bottom: 10px;
+            /* Separa cada descripción de la siguiente */
+        }
+
+        /* ===== IMÁGENES ===== */
+        img {
+            border-radius: 10px;
+            /* Redondea las esquinas de las imágenes */
+            margin: 10px 10px 10px 0;
+            /* Agrega separación alrededor de cada imagen */
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+            /* Añade una sombra suave */
+        }
+
+        /* ===== AUDIO ===== */
+        audio {
+            margin-top: 10px;
+            /* Separa el reproductor del contenido superior */
+            width: 100%;
+            /* Permite que el audio ocupe el ancho disponible */
+            max-width: 500px;
+            /* Limita el ancho máximo del reproductor */
+        }
+
+        /* ===== IFRAME (VIDEOS) ===== */
+        iframe {
+            width: 100%;
+            /* Permite que el video se adapte al ancho del contenedor */
+            max-width: 700px;
+            /* Limita el tamaño máximo del video */
+            height: 400px;
+            /* Define una altura visible para el video */
+            border: none;
+            /* Elimina el borde por defecto del iframe */
+            border-radius: 10px;
+            /* Redondea las esquinas del video */
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+            /* Añade una sombra alrededor del marco flotante */
+        }
+
+        /* ===== FORMULARIO GENERAL ===== */
+        form {
+            margin: 20px auto 0;
+            /* Separa el formulario del contenido superior y lo centra */
+            max-width: 600px;
+            /* Define un ancho cómodo para su visualización */
+            background-color: #faf7f2;
+            /* Aplica un fondo tipo tarjeta */
+            padding: 30px;
+            /* Agrega espacio interno al formulario */
+            border-radius: 12px;
+            /* Redondea los bordes */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            /* Añade una sombra suave */
+            border: 1px solid #e4e4e4;
+            /* Agrega un borde claro */
+        }
+
+        label {
+            display: block;
+            /* Hace que la etiqueta ocupe una línea completa */
+            margin-top: 15px;
+            /* Separa cada etiqueta del elemento anterior */
+            margin-bottom: 8px;
+            /* Separa la etiqueta de su campo */
+            font-weight: bold;
+            /* Resalta visualmente el nombre del campo */
+            color: #5e0b0b;
+            /* Aplica color rojo oscuro a las etiquetas */
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            /* Hace que los controles ocupen el ancho disponible */
+            padding: 12px;
+            /* Agrega espacio interno en los campos */
+            border: 1px solid #ccc;
+            /* Define un borde gris claro */
+            border-radius: 8px;
+            /* Redondea las esquinas de los controles */
+            font-size: 1rem;
+            /* Mantiene el texto en tamaño legible */
+            box-sizing: border-box;
+            /* Evita que padding y borde aumenten el tamaño final del campo */
+            background-color: white;
+            /* Fondo blanco para los controles */
+            transition: border-color 0.3s;
+            /* Suaviza el cambio de color al enfocarlos */
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #8B0000;
+            /* Cambia el color del borde al seleccionar el campo */
+            outline: none;
+            /* Elimina el contorno por defecto del navegador */
+        }
+
+        textarea {
+            resize: vertical;
+            /* Permite redimensionar solo en altura el campo de comentarios */
+        }
+
+        /* ===== GRUPO DE BOTONES RADIO ===== */
+        .radio-group {
+            margin-top: 10px;
+            /* Separa el grupo del texto superior */
+            background-color: white;
+            /* Aplica fondo blanco al bloque */
+            padding: 12px;
+            /* Agrega espacio interno */
+            border-radius: 8px;
+            /* Redondea sus bordes */
+            border: 1px solid #ccc;
+            /* Añade borde gris claro */
+            display: flex;
+            /* Organiza las opciones en fila */
+            gap: 20px;
+            /* Separa horizontalmente cada opción */
+        }
+
+        .radio-group input {
+            width: auto;
+            /* Evita que el radio button ocupe todo el ancho */
+            margin: 0;
+            /* Elimina márgenes extra */
+            cursor: pointer;
+            /* Cambia el cursor para indicar selección */
+        }
+
+        .radio-group label {
+            display: inline;
+            /* Permite que la etiqueta quede al lado del radio button */
+            font-weight: normal;
+            /* Reduce el énfasis visual respecto a las demás etiquetas */
+            margin: 0;
+            /* Elimina márgenes */
+            color: #333;
+            /* Color oscuro legible */
+            cursor: pointer;
+            /* Permite hacer clic también sobre el texto */
+        }
+
+        /* ===== BOTONES SUBMIT ===== */
+        button {
+            width: 100%;
+            /* Hace que el botón ocupe todo el ancho del formulario */
+            margin-top: 25px;
+            /* Lo separa del último campo */
+            background-color: #8B0000;
+            /* Fondo rojo oscuro */
+            color: white;
+            /* Texto blanco */
+            font-weight: bold;
+            /* Resalta el texto del botón */
+            font-size: 1.1rem;
+            /* Aumenta ligeramente el tamaño de la letra */
+            cursor: pointer;
+            /* Cambia el cursor al pasar sobre el botón */
+            border: none;
+            /* Elimina el borde por defecto */
+            padding: 14px;
+            /* Agrega espacio interno */
+            border-radius: 8px;
+            /* Redondea las esquinas */
+            transition: background-color 0.3s ease, transform 0.1s;
+            /* Suaviza el cambio de color y el efecto al presionar */
+        }
+
+        button:hover {
+            background-color: #5e0b0b;
+            /* Oscurece el botón al pasar el mouse */
+        }
+
+        button:active {
+            transform: scale(0.98);
+            /* Genera un efecto de presión al hacer clic */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- BLOQUE SUPERIOR FIJO: contiene el título del sitio y el menú -->
+    <div class="barra-superior">
+
+        <header>
+            <!-- Encabezado principal del sitio -->
+            <div class="contenedor">
+                <h1>Restaurante Sabores de Chile</h1>
+                <!-- Título principal visible para el usuario -->
+            </div>
+        </header>
+
+        <nav>
+            <!-- Menú de navegación interna con anclas -->
+            <div class="contenedor">
+                <ul>
+                    <li><a href="#quienes">Quiénes somos</a></li>
+                    <!-- Enlace interno a la sección de presentación -->
+                    <li><a href="#platos">Platos</a></li>
+                    <!-- Enlace interno a la sección de platos -->
+                    <li><a href="#bebidas">Bebidas</a></li>
+                    <!-- Enlace interno a la sección de bebidas -->
+                    <li><a href="#postres">Postres</a></li>
+                    <!-- Enlace interno a la sección de postres -->
+                    <li><a href="#especialidades">Especialidades</a></li>
+                    <!-- Enlace interno a la sección de especialidades -->
+                    <li><a href="#promociones">Promociones</a></li>
+                    <!-- Enlace interno a la sección de promociones -->
+                    <li><a href="#plato-semana">Plato de la semana</a></li>
+                    <!-- Enlace interno a la sección destacada -->
+                    <li><a href="#videos">Videos relacionados</a></li>
+                    <!-- Enlace interno a la sección multimedia con iframe -->
+                    <li><a href="#acceso">Acceso</a></li>
+                    <!-- Enlace interno al formulario de acceso -->
+                    <li><a href="#registro">Registro</a></li>
+                    <!-- Enlace interno al formulario de registro -->
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <!-- SECCIÓN QUIÉNES SOMOS -->
+    <section id="quienes">
+        <h2>Quiénes somos</h2>
+        <p>
+            Somos un restaurante enfocado en rescatar los sabores tradicionales de la gastronomía chilena,
+            entregando una experiencia culinaria auténtica a cada uno de nuestros visitantes.
+        </p>
+        <p>
+            Nuestro objetivo es ofrecer platos típicos preparados con ingredientes frescos, recetas tradicionales
+            y una atención cercana, resaltando la identidad gastronómica de Chile.
+        </p>
+    </section>
+
+    <!-- SECCIÓN PLATOS -->
+    <section id="platos">
+        <h2>Platos</h2>
+        <table>
+            <thead>
+                <!-- thead agrupa los encabezados de la tabla -->
+                <tr>
+                    <!-- tr representa una fila -->
+                    <th>Plato</th>
+                    <!-- th representa una celda de encabezado -->
+                    <th>Descripción</th>
+                    <th>Precio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- tbody agrupa el contenido principal de la tabla -->
+                <tr>
+                    <td>Empanada</td>
+                    <!-- td representa una celda de datos -->
+                    <td>Carne, cebolla y especias</td>
+                    <td>$2.500</td>
+                </tr>
+                <tr>
+                    <td>Pastel de choclo</td>
+                    <td>Preparación tradicional chilena</td>
+                    <td>$6.500</td>
+                </tr>
+                <tr>
+                    <td>Cazuela</td>
+                    <td>Sopa con verduras y carne</td>
+                    <td>$5.800</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- SECCIÓN BEBIDAS -->
+    <section id="bebidas">
+        <h2>Bebidas</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Bebida</th>
+                    <th>Descripción</th>
+                    <th>Precio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Mote con huesillo</td>
+                    <td>Bebida tradicional chilena</td>
+                    <td>$3.000</td>
+                </tr>
+                <tr>
+                    <td>Terremoto</td>
+                    <td>Bebida típica chilena</td>
+                    <td>$5.000</td>
+                </tr>
+                <tr>
+                    <td>Jugo natural</td>
+                    <td>Frutas frescas</td>
+                    <td>$4.000</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- SECCIÓN POSTRES -->
+    <section id="postres">
+        <h2>Postres</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Postre</th>
+                    <th>Descripción</th>
+                    <th>Precio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Leche asada</td>
+                    <td>Postre casero</td>
+                    <td>$3.500</td>
+                </tr>
+                <tr>
+                    <td>Torta mil hojas</td>
+                    <td>Capas de masa con manjar</td>
+                    <td>$6.000</td>
+                </tr>
+                <tr>
+                    <td>Suspiro limeño</td>
+                    <td>Dulce tradicional de textura cremosa</td>
+                    <td>$5.000</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- SECCIÓN ESPECIALIDADES -->
+    <section id="especialidades">
+        <h2>Especialidades de la casa</h2>
+        <dl>
+            <!-- dl crea una lista descriptiva -->
+            <dt>Curanto</dt>
+            <!-- dt define el término principal -->
+            <dd>Preparación tradicional con mariscos y carnes. Precio: $12.000</dd>
+            <!-- dd contiene la descripción del término -->
+            <dt>Asado al palo</dt>
+            <dd>Carne cocinada lentamente al fuego, resaltando su sabor y textura. Precio: $10.500</dd>
+        </dl>
+    </section>
+
+    <!-- SECCIÓN PROMOCIONES -->
+    <section id="promociones">
+        <h2>Promociones</h2>
+        <ul>
+            <!-- ul crea una lista no ordenada -->
+            <li>10% de descuento en platos seleccionados.</li>
+            <li>Bebida gratis en menú ejecutivo.</li>
+            <li>2x1 en postres los días miércoles.</li>
+        </ul>
+    </section>
+
+    <!-- SECCIÓN PLATO DE LA SEMANA -->
+    <section id="plato-semana">
+        <h2>Plato de la semana</h2>
+        <p>
+            El pastel de choclo es uno de los platos más representativos de Chile, combinando sabores
+            dulces y salados en una preparación tradicional muy valorada dentro de la cocina nacional.
+        </p>
+
+        <p><strong>Precio del plato de la semana: $6.500</strong></p>
+        <!-- strong resalta visualmente el precio -->
+        <img src="img/pastel1.png" alt="Pastel de choclo servido" width="300">
+        <!-- img inserta una imagen; src indica la ruta, alt describe el contenido y width define el ancho -->
+        <img src="img/pastel2.png" alt="Preparación del pastel de choclo" width="300">
+        <!-- Segunda imagen relacionada con el plato de la semana -->
+        <br><br>
+        <!-- br genera salto de línea -->
+
+        <audio controls>
+            <!-- audio permite insertar sonido; controls muestra los botones del reproductor -->
+            <source src="audio/audio.mp3" type="audio/mpeg">
+            <!-- source define la ruta del archivo y su tipo -->
+            Tu navegador no soporta audio.
+        </audio>
+
+        <p>
+            Para complementar la información sobre este plato típico chileno,
+            también se puede revisar el siguiente recurso externo:
+            <a href="https://es.wikipedia.org/wiki/Pastel_de_choclo" target="_blank">
+                Ver información del pastel de choclo
+            </a>
+            <!-- a crea un enlace; href indica la dirección y target="_blank" abre en otra pestaña -->
+        </p>
+    </section>
+
+    <!-- SECCIÓN VIDEOS RELACIONADOS -->
+    <section id="videos">
+        <h2>Videos relacionados</h2>
+        <p>
+            En esta sección se incorpora un video de YouTube sobre la preparación de un plato típico chileno,
+            con el propósito de complementar la información gastronómica del restaurante.
+        </p>
+        <!-- 
+            iframe permite incrustar contenido externo dentro de la página web.
+            src contiene la URL del video en formato embed proporcionado por YouTube.
+            title describe el contenido del video, mejorando la accesibilidad.
+            allow habilita funciones del reproductor como reproducción multimedia.
+            allowfullscreen permite visualizar el video en pantalla completa.
+        -->
+        <iframe src="https://www.youtube.com/embed/9S_6HG85_u0" title="Preparación de plato típico chileno"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+        </iframe>
+    </section>
+
+    <!-- FORMULARIO DE ACCESO -->
+    <section id="acceso">
+        <h2>Formulario de acceso</h2>
+        <p>
+            Este formulario permite que un usuario ya registrado pueda ingresar a la página mediante su nombre
+            de usuario y contraseña.
+        </p>
+
+        <form action="#" method="post">
+            <!--form agrupa todos los campos del formulario.
+                action="#" evita redireccionar a una ruta inexistente en un archivo local.
+                method="post" indica el método de envío de datos.-->
+            <label for="usuario">Nombre de usuario:</label>
+            <!-- label describe el campo y se asocia con el input mediante el atributo for -->
+            <input type="text" id="usuario" name="usuario" placeholder="Ingrese su nombre de usuario" required>
+            <!--input type="text" crea un campo de texto.
+                id identifica el campo dentro del documento.
+                name identifica el dato al enviarse.
+                placeholder muestra una ayuda dentro del campo.
+                required obliga a completar el campo antes de enviar.-->
+            <label for="clave">Contraseña:</label>
+            <input type="password" id="clave" name="clave" placeholder="Ingrese su contraseña" required>
+            <!--input type="password" crea un campo de contraseña.
+                Oculta visualmente los caracteres ingresados.-->
+            <button type="submit">Enviar</button>
+            <!-- button type="submit" crea el botón para enviar el formulario -->
+        </form>
+    </section>
+
+    <!-- FORMULARIO DE REGISTRO -->
+    <section id="registro">
+        <h2>Formulario de registro de nuevos usuarios</h2>
+        <p>
+            Este formulario permite registrar nuevos clientes solicitando información personal básica,
+            utilizando distintos tipos de campos según la naturaleza del dato requerido.
+        </p>
+
+        <form action="#" method="post">
+            <!-- Formulario destinado al registro de nuevos usuarios -->
+            <label for="nombre_apellido">Nombre y apellido:</label>
+            <input type="text" id="nombre_apellido" name="nombre_apellido" placeholder="Ingrese su nombre y apellido"
+                required>
+            <!-- Campo de texto para registrar el nombre completo del usuario -->
+            <label for="tipo_documento">Tipo de documento:</label>
+            <select id="tipo_documento" name="tipo_documento" required>
+                <!-- select crea una lista desplegable.
+                Es útil cuando el usuario debe elegir una opción entre varias alternativas predefinidas.
+                -->
+                <option value="">Seleccione una opción</option>
+                <!-- option define cada alternativa dentro de la lista -->
+                <option value="dni">DNI</option>
+                <option value="rut">RUT</option>
+                <option value="cedula">Cédula</option>
+                <option value="pasaporte">Pasaporte</option>
+            </select>
+            <label for="numero_documento">Número de documento:</label>
+            <input type="text" id="numero_documento" name="numero_documento"
+                placeholder="Ingrese su número de documento" required>
+            <!-- Campo de texto para registrar el número del documento -->
+            <label for="fecha_nacimiento">Fecha de nacimiento:</label>
+            <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
+            <!--input type="date" permite seleccionar una fecha usando el calendario del navegador,
+                lo que ayuda a evitar errores de formato.-->
+            <label>Sexo:</label>
+            <div class="radio-group">
+                <!-- Contenedor visual para agrupar las opciones de sexo -->
+                <input type="radio" id="masculino" name="sexo" value="masculino" required>
+                <!--input type="radio" permite seleccionar una sola opción entre varias.
+                    Todos los radio con el mismo name pertenecen al mismo grupo.-->
+                <label for="masculino">Masculino</label>
+                <input type="radio" id="femenino" name="sexo" value="femenino">
+                <label for="femenino">Femenino</label>
+            </div>
+            <label for="correo">Correo electrónico:</label>
+            <input type="email" id="correo" name="correo" placeholder="Ingrese su correo electrónico" required>
+            <!--input type="email" crea un campo específico para correos electrónicos
+                y ayuda a validar el formato ingresado.-->
+            <label for="telefono">Teléfono móvil:</label>
+            <input type="tel" id="telefono" name="telefono" placeholder="Ingrese su teléfono móvil" required>
+            <!-- input type="tel" está orientado al ingreso de números telefónicos -->
+            <label for="comentarios">Comentarios:</label>
+            <textarea id="comentarios" name="comentarios" rows="5"
+                placeholder="Escriba aquí sus comentarios o consultas"></textarea>
+            <!--textarea permite escribir texto en varias líneas.
+                rows define la altura inicial del cuadro de texto.-->
+            <button type="submit">Registrar</button>
+            <!-- Botón que envía el formulario de registro -->
+        </form>
+    </section>
+</body>
+
+</html>
