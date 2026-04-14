@@ -619,7 +619,6 @@
             <!-- a crea un enlace; href indica la dirección y target="_blank" abre en otra pestaña -->
         </p>
     </section>
-
     <!-- SECCIÓN VIDEOS RELACIONADOS -->
     <section id="videos">
         <h2>Videos relacionados</h2>
@@ -648,24 +647,19 @@
             de usuario y contraseña.
         </p>
 
-        <form action="#" method="post">
-            <!--form agrupa todos los campos del formulario.
-                action="#" evita redireccionar a una ruta inexistente en un archivo local.
-                method="post" indica el método de envío de datos.-->
+        <form onsubmit="mostrarMensaje(event)">
+            <!-- onsubmit ejecuta la función mostrarMensaje al presionar el botón -->
             <label for="usuario">Nombre de usuario:</label>
-            <!-- label describe el campo y se asocia con el input mediante el atributo for -->
+            <!-- label describe el campo de entrada -->
             <input type="text" id="usuario" name="usuario" placeholder="Ingrese su nombre de usuario" required minlength="4" maxlength="20">
-            <!--input type="text" crea un campo de texto.
-                id identifica el campo dentro del documento.
-                name identifica el dato al enviarse.
-                placeholder muestra una ayuda dentro del campo.
-                required obliga a completar el campo antes de enviar.-->
+            <!-- input type="text" crea un campo de texto -->
+            <!-- required obliga a completar el campo -->
+            <!-- minlength y maxlength limitan la cantidad de caracteres -->
             <label for="clave">Contraseña:</label>
             <input type="password" id="clave" name="clave" placeholder="Ingrese su contraseña" required>
-            <!--input type="password" crea un campo de contraseña.
-                Oculta visualmente los caracteres ingresados.-->
+            <!-- input type="password" oculta los caracteres ingresados -->
             <button type="submit">Enviar</button>
-            <!-- button type="submit" crea el botón para enviar el formulario -->
+            <!-- botón que activa el envío del formulario -->
         </form>
     </section>
 
@@ -677,62 +671,58 @@
             utilizando distintos tipos de campos según la naturaleza del dato requerido.
         </p>
 
-        <form action="#" method="post">
-            <!-- Formulario destinado al registro de nuevos usuarios -->
+        <form onsubmit="mostrarMensaje(event)">
+            <!-- Formulario que ejecuta una función JavaScript en lugar de enviar datos a un servidor -->
             <label for="nombre_apellido">Nombre y apellido:</label>
-            <input type="text" id="nombre_apellido" name="nombre_apellido" placeholder="Ingrese su nombre y apellido"
-                required>
-            <!-- Campo de texto para registrar el nombre completo del usuario -->
+            <input type="text" id="nombre_apellido" name="nombre_apellido" placeholder="Ingrese su nombre y apellido" required>
+            <!-- Campo de texto para el nombre completo -->
             <label for="tipo_documento">Tipo de documento:</label>
             <select id="tipo_documento" name="tipo_documento" required>
-                <!-- select crea una lista desplegable.
-                Es útil cuando el usuario debe elegir una opción entre varias alternativas predefinidas.
-                -->
+                <!-- select permite elegir una opción de una lista -->
                 <option value="">Seleccione una opción</option>
-                <!-- option define cada alternativa dentro de la lista -->
                 <option value="dni">DNI</option>
                 <option value="rut">RUT</option>
                 <option value="cedula">Cédula</option>
                 <option value="pasaporte">Pasaporte</option>
             </select>
             <label for="numero_documento">Número de documento:</label>
-            <input type="text" id="numero_documento" name="numero_documento"
-                placeholder="Ingrese su número de documento" required>
-            <!-- Campo de texto para registrar el número del documento -->
+            <input type="text" id="numero_documento" name="numero_documento" placeholder="Ingrese su número de documento" required>
+            <!-- Campo para ingresar datos numéricos o alfanuméricos -->
             <label for="fecha_nacimiento">Fecha de nacimiento:</label>
             <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
-            <!--input type="date" permite seleccionar una fecha usando el calendario del navegador,
-                lo que ayuda a evitar errores de formato.-->
+            <!-- Permite seleccionar una fecha desde un calendario -->
             <label>Sexo:</label>
             <div class="radio-group">
-                <!-- Contenedor visual para agrupar las opciones de sexo -->
                 <input type="radio" id="masculino" name="sexo" value="masculino" required>
-                <!--input type="radio" permite seleccionar una sola opción entre varias.
-                    Todos los radio con el mismo name pertenecen al mismo grupo.-->
                 <label for="masculino">Masculino</label>
                 <input type="radio" id="femenino" name="sexo" value="femenino">
                 <label for="femenino">Femenino</label>
             </div>
+            <!-- radio permite seleccionar solo una opción -->
             <label for="correo">Correo electrónico:</label>
             <input type="email" id="correo" name="correo" placeholder="Ingrese su correo electrónico" required>
-            <!--input type="email" crea un campo específico para correos electrónicos
-                y ayuda a validar el formato ingresado.-->
+            <!-- valida formato de correo -->
             <label for="telefono">Teléfono móvil:</label>
             <input type="tel" id="telefono" name="telefono" pattern="[0-9]{9}" placeholder="Ej: 912345678" required>
-            <!-- input type="tel" está orientado al ingreso de números telefónicos -->
+            <!-- pattern valida que tenga 9 números -->
             <label for="comentarios">Comentarios:</label>
-            <textarea id="comentarios" name="comentarios" rows="5"
-                placeholder="Escriba aquí sus comentarios o consultas"></textarea>
-            <!--textarea permite escribir texto en varias líneas.
-                rows define la altura inicial del cuadro de texto.-->
+            <textarea id="comentarios" name="comentarios" rows="5" placeholder="Escriba aquí sus comentarios o consultas"></textarea>
+            <!-- textarea permite escribir varias líneas -->
             <button type="submit">Registrar</button>
-            <!-- Botón que envía el formulario de registro -->
+            <!-- botón que ejecuta la función JavaScript -->
         </form>
     </section>
-</body>
-
-</html>
-    </section>
+    <script>
+            function mostrarMensaje(event) {
+            event.preventDefault(); // evita que el formulario se envíe y genere error 405         
+            alert("Formulario enviado correctamente. Enviado a autorizar a Juan Saavedra."); 
+            // muestra un mensaje al usuario confirmando el envío
+            event.target.reset(); 
+            // limpia todos los campos del formulario para permitir ingresar nuevos datos
+            return false; 
+            // evita que el navegador continúe con el comportamiento por defecto
+        }
+    </script>
 </body>
 
 </html>
